@@ -1,0 +1,27 @@
+Computing Baseball Stats using Riak Map/Reduce
+
+* What is this?
+
+This project is primarily an example of using Riak
+(http://github.com/basho/riak) and luwak_mr
+(http://github.com/beerriot/luwak_mr) to compute baseball statistics.
+
+* How do I use it?
+
+First, grab the game event files by decade from the Retrosheet
+archive: http://www.retrosheet.org/game.htm.  Unzip them into
+usefully-named directories (e.g. "1950s").
+
+Setup Riak, then clone luwak_mr and this project, build them, and add
+them to Riak's code path.
+
+Load the Retrosheet data into Riak by attaching to the Riak console
+and using baseball:load_events(Directory), where Directory is the path
+to one of your unzipped archives (e.g. "/home/bryan/baseball/1950s").
+
+Compute the batting average for any player by attaching to the Riak
+console and using baseball:batting_average(File, PlayerID), where File
+is the last component of the path that you used in your load_events
+call (e.g. 1950s), and PlayerID is the 8-character identifier of any
+player (see the .ROS files in your unpacked archive, or the Retrosheet
+docs for information about player IDs).
